@@ -1,2 +1,5 @@
 FileNameChanger/obj/
 FileNameChanger/bin/
+
+*.suo
+*.sln
