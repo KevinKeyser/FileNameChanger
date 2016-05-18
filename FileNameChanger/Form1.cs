@@ -51,7 +51,12 @@ namespace FileNameChanger
                     foreach (FileInfo file in directinfo.GetFiles())
                     {
                         string extenstion = file.Extension;
-                        file.MoveTo(filelocation + @"//" + file.Name.Remove(file.Name.LastIndexOf('.')).Replace(Find.Text, Replace.Text) + extenstion);
+                        if (extensionTextBox.Text.Trim() != "")
+                        {
+                            extenstion = extensionTextBox.Text;
+                        }
+                        string filePath = file.Name.Remove(file.Name.LastIndexOf('.')).Replace(Find.Text, Replace.Text) + file.Extension;
+                        File.Move(file.FullName,  filelocation + @"//" + filePath.Remove(filePath.LastIndexOf('.')) + "." + extenstion);
                     }
                     FileView.Items.Clear();
                     foreach (FileInfo file in directinfo.GetFiles())
