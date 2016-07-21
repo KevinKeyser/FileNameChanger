@@ -37,6 +37,8 @@
             this.FileView = new System.Windows.Forms.ListBox();
             this.swagTimer = new System.Windows.Forms.Timer(this.components);
             this.extensionTextBox = new System.Windows.Forms.TextBox();
+            this.FindLabel = new System.Windows.Forms.Label();
+            this.extensionButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.FileDialogDragDrop)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,12 +101,34 @@
             this.extensionTextBox.Size = new System.Drawing.Size(100, 20);
             this.extensionTextBox.TabIndex = 6;
             // 
+            // FindLabel
+            // 
+            this.FindLabel.AutoSize = true;
+            this.FindLabel.Location = new System.Drawing.Point(118, 41);
+            this.FindLabel.Name = "FindLabel";
+            this.FindLabel.Size = new System.Drawing.Size(27, 13);
+            this.FindLabel.TabIndex = 7;
+            this.FindLabel.Text = "Find";
+            // 
+            // extensionButton
+            // 
+            this.extensionButton.Location = new System.Drawing.Point(118, 91);
+            this.extensionButton.Name = "extensionButton";
+            this.extensionButton.Size = new System.Drawing.Size(75, 23);
+            this.extensionButton.TabIndex = 8;
+            this.extensionButton.TabStop = false;
+            this.extensionButton.Text = "Change Ext";
+            this.extensionButton.UseVisualStyleBackColor = true;
+            this.extensionButton.Click += new System.EventHandler(this.extensionButton_Click);
+            // 
             // FileRenamer
             // 
             this.AcceptButton = this.RenameButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(363, 118);
+            this.Controls.Add(this.extensionButton);
+            this.Controls.Add(this.FindLabel);
             this.Controls.Add(this.extensionTextBox);
             this.Controls.Add(this.FileView);
             this.Controls.Add(this.FileDialogDragDrop);
@@ -135,6 +159,8 @@
         private System.Windows.Forms.ListBox FileView;
         private System.Windows.Forms.Timer swagTimer;
         private System.Windows.Forms.TextBox extensionTextBox;
+        private System.Windows.Forms.Label FindLabel;
+        private System.Windows.Forms.Button extensionButton;
     }
 }
 

@@ -50,13 +50,8 @@ namespace FileNameChanger
                     DirectoryInfo directinfo = new DirectoryInfo(filelocation);
                     foreach (FileInfo file in directinfo.GetFiles())
                     {
-                        string extenstion = file.Extension;
-                        if (extensionTextBox.Text.Trim() != "")
-                        {
-                            extenstion = extensionTextBox.Text;
-                        }
                         string filePath = file.Name.Remove(file.Name.LastIndexOf('.')).Replace(Find.Text, Replace.Text) + file.Extension;
-                        File.Move(file.FullName,  filelocation + @"//" + filePath.Remove(filePath.LastIndexOf('.')) + "." + extenstion);
+                        File.Move(file.FullName,  filelocation + @"//" + filePath);
                     }
                     FileView.Items.Clear();
                     foreach (FileInfo file in directinfo.GetFiles())
@@ -70,6 +65,38 @@ namespace FileNameChanger
                 MessageBox.Show("Path Doesn't Exist");
             }
         }
+
+        private void extensionButton_Click(object sender, EventArgs e)
+        {
+            string filelocation = Url.Text;
+            if (Directory.Exists(filelocation))
+            {
+                if (Find.Text != "")
+                {
+                    DirectoryInfo directinfo = new DirectoryInfo(filelocation);
+                    foreach (FileInfo file in directinfo.GetFiles())
+                    {
+                        string extenstion = file.Extension;
+                        if (extensionTextBox.Text.Trim() != "")
+                        {
+                            extenstion = extensionTextBox.Text;
+                        }
+                        string filePath = file.Name.Remove(file.Name.LastIndexOf('.')).Replace(Find.Text, Replace.Text) + file.Extension;
+                        File.Move(file.FullName, filelocation + @"//" + filePath.Remove(filePath.LastIndexOf('.')) + "." + extenstion);
+                    }
+                    FileView.Items.Clear();
+                    foreach (FileInfo file in directinfo.GetFiles())
+                    {
+                        FileView.Items.Add(file.Name);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Path Doesn't Exist");
+            }
+        }
+
         private void FileRenamer_DragDrop(object sender, DragEventArgs e)
         {
             string[] files = (string[])e.Data.GetData(System.Windows.Forms.DataFormats.FileDrop);
